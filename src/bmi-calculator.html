@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+    <link rel="stylesheet" href="bmi-calculator.css"/>
+    
+</head>
+<body>
+    <header>
+        <div class="menu-toggle">
+          <div class="hamburger"></div>
+        </div>
+        <nav>
+          <ul>
+            <li><a class="hamburger-nav" href="main.html">HOME</a></li>
+            <li><a class="hamburger-nav" href="workouts.html">WORKOUTS</a></li>
+            <li><a class="hamburger-nav" href="bmi-calculator.html">BMI CALCULATOR</a></li>
+            <li><a class="hamburger-nav" href="calories-calculator.html">CALORIES CALCULATOR</a></li>
+          </ul>
+          <div class="close-toggle">
+            <div class="close"></div>
+            
+          </div>
+        </nav>
+      </header>
+
+      <div class="bmiCalcBox">
+        <form action="/action_page.php">
+          <label for="weight">Weight:</label><br>
+          <input type="number" id="weight" name="weight" min="1" max="500"><br>
+          <label for="height">Height:</label><br>
+          <input type="number" id="height" name="height" min="1" max="300"><br>
+          <label for="height">Age:</label><br>
+          <input type="number" id="age" name="height" min="1" max="120"><br><br>
+          <label>
+            <input type="radio" name="gender" value="woman">
+            Woman 
+          </label>
+
+          <label>
+            <input type="radio" name="gender" value="man">
+            Man
+          </label>
+
+          <input type="reset">
+        </form>
+
+
+      <div class="calculateButtonDiv">
+        <button id="calculateButton">
+          CALCULATE
+        </button>
+      </div>
+
+    <script src="bmi-calculator.js"></script>  
+</body>
+</html>
+  
