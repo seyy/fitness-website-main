@@ -126,7 +126,7 @@ body {
       transition: 0.15s;
     }
 
-    .bmiCalcBox {
+    #bmiCalcBox {
         width: 1222px;
         background-color: #333;
         margin-top: 172px;
@@ -196,4 +196,17 @@ body {
         background-color: #b6a9a9;
         transition: 0.15s;
     }
+
+    .calculateAgainButton {
+      font-family: monospace;
+        font-size: 28px;
+        border-radius: 15px;
+        cursor: pointer;
+        width: 302px;
+        height: 64px;
+        color:#333;
+    }
+
+    
+    
     
