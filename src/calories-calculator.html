@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALORIES CALCULATOR</title>
-    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="calories-calculator.css"/>
     
 </head>
 <body>
@@ -26,6 +26,39 @@
           </div>
         </nav>
       </header>
+
+      <div id="bmiCalcBox">
+        <form action="/action_page.php">
+          <label for="weight">Weight:</label><br>
+          <input type="number" id="weight" name="weight" min="1" max="500"><br>
+          <label for="height">Height:</label><br>
+          <input type="number" id="height" name="height" min="1" max="300"><br>
+          <label for="height">Age:</label><br>
+          <input type="number" id="height" name="height" min="1" max="120"><br>
+          <label>
+            <input type="radio" name="gender" id="woman">
+            Woman
+          </label>
+          <label>
+            <input type="radio" name="gender" id="man">
+            Man
+          </label>
+          <select aria-label="Physical Activity" id="activityChoice" name="field" class="activityChoices">
+            <option value="1.2" vt="1.2" data-i="0">Very low activity</option>
+            <option value="1.375" vt="1.375" data-i="1">Low activity</option>
+            <option value="1.2" vt="1.2" data-i="0">Average activity</option>
+            <option value="1.2" vt="1.2" data-i="0">High activity</option>
+            <option value="1.2" vt="1.2" data-i="0">Very high Activity</option>
+          </select>
+          <input id="resetInput" type="reset">
+        </form>
+
+
+      <div class="calculateButtonDiv">
+        <button id="calculateButton">
+          CALCULATE
+        </button>
+      </div>
     <script src="main.js"></script>
 </body>
 </html>
