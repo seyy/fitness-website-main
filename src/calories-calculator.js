@@ -6,7 +6,7 @@ const activityInput = document.querySelector('select[aria-label="physicalActivit
 const calculateBtn = document.getElementById("calculateButton");
 const calculatorDiv = document.getElementById("bmiCalcBox");
 
-
+let selectedGender;
 // HAMBURGER -------------------------------------------------------------
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
@@ -25,6 +25,7 @@ closeToggle.addEventListener('click', () => {
 // -------------------------------------------------------------------------
 
 // IF SOME INFO NEEDED ABOUT THE USER IS NOT ENTERED DISABLE THE CALCULATE CALORIES BUTTON
+
 function checkInputs() {
   if(weightInput.value && heightInput.value && ageInput.value && isGenderSelected()) {
     calculateBtn.disabled = false;
@@ -32,6 +33,8 @@ function checkInputs() {
     calculateBtn.disabled = true;
   }
 }
+
+// FUNCTION CHECKS IF GENDER IS SELECTED BY THE USER
 
 function isGenderSelected() {
   for(let i = 0; i < genderInput.length; i++) {
@@ -42,6 +45,7 @@ function isGenderSelected() {
   return false;
 }
 
+
 weightInput.addEventListener("input", checkInputs);
 heightInput.addEventListener("input", checkInputs);
 ageInput.addEventListener("input", checkInputs);
@@ -50,19 +54,21 @@ genderInput.forEach((button) => {
   });
 });
 
+// TELLS US WHICH ACTIVITY LEVEL USER CHOSE
 
 activityInput.addEventListener('change', () => {
   const selectedActivity = activityInput.value;
   console.log(selectedActivity);
 });
 
+// BUTTON THAT IS CALCULATING USER'S CALORIES FOR THE DAY
 
 calculateBtn.addEventListener("click", () => {
-  let selectedGender;
+
   for(let i = 0; i < genderInput.length; i++) {
     if(genderInput[i].checked) {
       selectedGender = genderInput[i].value;
     }
   }
-  console.log(weightInput.value, heightInput.value, ageInput.value, selectedGender);
+  console.log(selectedGender);
 });
