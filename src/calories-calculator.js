@@ -7,6 +7,7 @@ const calculateBtn = document.getElementById("calculateButton");
 const calculatorDiv = document.getElementById("bmiCalcBox");
 
 let selectedGender;
+let selectedActivity;
 // HAMBURGER -------------------------------------------------------------
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
@@ -39,6 +40,7 @@ function checkInputs() {
 function isGenderSelected() {
   for(let i = 0; i < genderInput.length; i++) {
     if(genderInput[i].checked) {
+      selectedGender = genderInput[i].value;
       return true;
     }
   }
@@ -57,18 +59,25 @@ genderInput.forEach((button) => {
 // TELLS US WHICH ACTIVITY LEVEL USER CHOSE
 
 activityInput.addEventListener('change', () => {
-  const selectedActivity = activityInput.value;
+  selectedActivity = activityInput.value;
   console.log(selectedActivity);
 });
 
 // BUTTON THAT IS CALCULATING USER'S CALORIES FOR THE DAY
-
-calculateBtn.addEventListener("click", () => {
-
+const genderChoice = () => {
   for(let i = 0; i < genderInput.length; i++) {
     if(genderInput[i].checked) {
       selectedGender = genderInput[i].value;
     }
   }
-  console.log(selectedGender);
-});
+}
+
+
+// A FUNCTION THAT CONSOLE LOGS OUT EVERY NEEDED DATA TO CALCULATE USER'S BMR
+const consoleLoggingOutData = () => {
+  console.log(selectedGender, selectedActivity, weightInput.value, ageInput.value, heightInput.value)
+}
+
+
+
+calculateBtn.addEventListener("click", consoleLoggingOutData)
