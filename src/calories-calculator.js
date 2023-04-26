@@ -1,8 +1,8 @@
 const weightInput = document.getElementById("weight");
 const heightInput = document.getElementById("height");
 const ageInput = document.getElementById("age");
-const activityInput = document.getElementById("activityChoice");
 const genderInput = document.querySelectorAll('input[type="radio"]');
+const activityInput = document.querySelector('select[aria-label="physicalActivity"]');
 const calculateBtn = document.getElementById("calculateButton");
 const calculatorDiv = document.getElementById("bmiCalcBox");
 
@@ -24,38 +24,45 @@ closeToggle.addEventListener('click', () => {
 
 // -------------------------------------------------------------------------
 
-weightInput.addEventListener("input", function() {
-    if(weightInput.value && !heightInput.value || !ageInput.value || !genderInput.value) {
-      calculateBtn.disabled = true;
-    } else {
-      calculateBtn.disabled = false;
-    }
-});
+// IF SOME INFO NEEDED ABOUT THE USER IS NOT ENTERED DISABLE THE CALCULATE CALORIES BUTTON
+function checkInputs() {
+  if(weightInput.value && heightInput.value && ageInput.value && isGenderSelected()) {
+    calculateBtn.disabled = false;
+  } else {
+    calculateBtn.disabled = true;
+  }
+}
 
-  
-heightInput.addEventListener("input", function() {
-    if(heightInput.value && !weightInput.value || !ageInput.value ||!genderInput) {
-      calculateBtn.disabled = true;
-    } else {
-      calculateBtn.disabled = false;
+function isGenderSelected() {
+  for(let i = 0; i < genderInput.length; i++) {
+    if(genderInput[i].checked) {
+      return true;
     }
-});
+  }
+  return false;
+}
 
-ageInput.addEventListener("input", function() {
-    if(ageInput.value && !weightInput.value || !heightInput.value || !genderInput) {
-        calculateBtn.disabled = true;
-    } else {
-        calculateBtn.disabled = false;
-    }
-});
-
+weightInput.addEventListener("input", checkInputs);
+heightInput.addEventListener("input", checkInputs);
+ageInput.addEventListener("input", checkInputs);
 genderInput.forEach((button) => {
-  button.addEventListener('change', (event) => {
-    console.log(event.target.value);
-    if(genderInput.value && !weightInput.value || !heightInput.value || !ageInput.value) {
-      calculateBtn.disabled = true;
-    } else {
-      calculateBtn.disabled = false;
-    }
+  button.addEventListener('change', checkInputs,  {
   });
+});
+
+
+activityInput.addEventListener('change', () => {
+  const selectedActivity = activityInput.value;
+  console.log(selectedActivity);
+});
+
+
+calculateBtn.addEventListener("click", () => {
+  let selectedGender;
+  for(let i = 0; i < genderInput.length; i++) {
+    if(genderInput[i].checked) {
+      selectedGender = genderInput[i].value;
+    }
+  }
+  console.log(weightInput.value, heightInput.value, ageInput.value, selectedGender);
 });
