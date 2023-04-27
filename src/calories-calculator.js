@@ -28,6 +28,19 @@ closeToggle.addEventListener('click', () => {
 
 // -------------------------------------------------------------------------
 
+
+const calculateAgainBtn = document.createElement("button");
+calculateAgainBtn.innerText = "Calculate Again";
+calculateAgainBtn.classList.add("calcAgainBtn");
+
+calculateAgainBtn.addEventListener("click", function() {
+  calculateAgainBtn.disabled = true;
+
+  setTimeout(function() {
+    window.location.href = "calories-calculator.html"
+  }, 100);
+});
+
 // IF SOME INFO NEEDED ABOUT THE USER IS NOT ENTERED DISABLE THE CALCULATE CALORIES BUTTON
 
 function checkInputs() {
@@ -78,12 +91,14 @@ const calculatingBmr = () => {
   if (selectedGender === "man") {
     const bmr = Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5);
     const adjustedBmr = Math.round(bmr * selectedActivity);
-    console.log(`Your BMR is ${bmr} and your adjusted BMR based on activity level is ${adjustedBmr}.`);
+    calculatorDiv.innerHTML = (`Your BMR is ${bmr} and your adjusted BMR based on activity level is ${adjustedBmr}.`);
+    calculatorDiv.appendChild(calculateAgainBtn);
   } else {
     if (selectedGender === "woman") {
       const bmr = Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161);
       const adjustedBmr = Math.round(bmr * selectedActivity);
-      console.log(`Your BMR is ${bmr} and your adjusted BMR based on activity level is ${adjustedBmr}.`);
+      calculatorDiv.innerHTML = (`Your BMR is ${bmr} and your adjusted BMR based on activity level is ${adjustedBmr}.`);
+      calculatorDiv.appendChild(calculateAgainBtn);
     }
   }
 }
