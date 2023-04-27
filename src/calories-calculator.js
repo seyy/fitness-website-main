@@ -7,7 +7,10 @@ const calculateBtn = document.getElementById("calculateButton");
 const calculatorDiv = document.getElementById("bmiCalcBox");
 
 let selectedGender;
-let selectedActivity;
+
+
+
+
 // HAMBURGER -------------------------------------------------------------
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
@@ -47,6 +50,7 @@ function isGenderSelected() {
   return false;
 }
 
+// CHECKS IF WE HAVE A VALUE ENTERED BY USER
 
 weightInput.addEventListener("input", checkInputs);
 heightInput.addEventListener("input", checkInputs);
@@ -60,24 +64,21 @@ genderInput.forEach((button) => {
 
 activityInput.addEventListener('change', () => {
   selectedActivity = activityInput.value;
-  console.log(selectedActivity);
 });
 
-// BUTTON THAT IS CALCULATING USER'S CALORIES FOR THE DAY
-const genderChoice = () => {
-  for(let i = 0; i < genderInput.length; i++) {
-    if(genderInput[i].checked) {
-      selectedGender = genderInput[i].value;
-    }
+
+
+const calculatingBmrMan = () => {
+  const age = parseInt(ageInput.value);
+  const weight = parseFloat(weightInput.value);
+  const height = parseFloat(heightInput.value);
+  const selectedActivity = parseFloat(activityInput.value);
+
+  if (selectedGender === "man") {
+    const bmr = Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5);
+    const adjustedBmr = Math.round(bmr * selectedActivity);
+    console.log(`Your BMR is ${bmr} and your adjusted BMR based on activity level is ${adjustedBmr}.`);
   }
 }
 
-
-// A FUNCTION THAT CONSOLE LOGS OUT EVERY NEEDED DATA TO CALCULATE USER'S BMR
-const consoleLoggingOutData = () => {
-  console.log(selectedGender, selectedActivity, weightInput.value, ageInput.value, heightInput.value)
-}
-
-
-
-calculateBtn.addEventListener("click", consoleLoggingOutData)
+calculateBtn.addEventListener("click", calculatingBmrMan)
