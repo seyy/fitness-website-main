@@ -213,3 +213,21 @@ body {
     #woman {
         margin-top: 22px;
     }
+
+    .calcAgainBtn {
+      font-family: monospace;
+        font-size: 28px;
+        border-radius: 15px;
+        cursor: pointer;
+        width: 302px;
+        height: 64px;
+        color:#333;
+        position: absolute;
+        bottom: 65px;
+    }
+
+   .calcAgainBtn:hover {
+    background-color: #b6a9a9;
+    transition: 0.15s;
+   }
+
