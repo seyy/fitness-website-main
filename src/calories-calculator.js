@@ -67,8 +67,9 @@ activityInput.addEventListener('change', () => {
 });
 
 
+// A FUNCTION THAT CALCULATES USER'S BMR 
 
-const calculatingBmrMan = () => {
+const calculatingBmr = () => {
   const age = parseInt(ageInput.value);
   const weight = parseFloat(weightInput.value);
   const height = parseFloat(heightInput.value);
@@ -78,7 +79,13 @@ const calculatingBmrMan = () => {
     const bmr = Math.round((10 * weight) + (6.25 * height) - (5 * age) + 5);
     const adjustedBmr = Math.round(bmr * selectedActivity);
     console.log(`Your BMR is ${bmr} and your adjusted BMR based on activity level is ${adjustedBmr}.`);
+  } else {
+    if (selectedGender === "woman") {
+      const bmr = Math.round((10 * weight) + (6.25 * height) - (5 * age) - 161);
+      const adjustedBmr = Math.round(bmr * selectedActivity);
+      console.log(`Your BMR is ${bmr} and your adjusted BMR based on activity level is ${adjustedBmr}.`);
+    }
   }
 }
 
-calculateBtn.addEventListener("click", calculatingBmrMan)
+calculateBtn.addEventListener("click", calculatingBmr)
