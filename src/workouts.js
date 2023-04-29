@@ -37,9 +37,9 @@ const workoutsBeginner = [
     },
     {
       name: 'Workout 3',
-      exercises: ['Military press', 'Pull-ups', 'Deadlifts', 'crunches'],
-      sets: 3,
-      reps: 15,
+      exercises: ['Push ups','Military press', 'Pull-ups', 'Deadlifts', 'crunches'],
+      sets: 4,
+      reps: 8,
       timesAWeek: 3
     }
   ];
@@ -47,14 +47,18 @@ const workoutsBeginner = [
   const displayRandomBeginnerWorkout = () => {
     const randomIndex = Math.floor(Math.random() * workoutsBeginner.length);
     const selectedWorkoutBeginner = workoutsBeginner[randomIndex];
-    const exercisesList = selectedWorkoutBeginner.exercises.map(exercise => `<li class= "class1">${exercise}</li>`).join('');
+    const exercisesList = selectedWorkoutBeginner.exercises.map(exercise => `<li>${exercise}</li>`).join('');
     const workoutBeginnerHTML = `
-      <ul>${exercisesList}</ul>
-      <p>Series: ${selectedWorkoutBeginner.sets}, Reps: ${selectedWorkoutBeginner.reps}, Times a week: ${selectedWorkoutBeginner.timesAWeek}</p>
+      <p class="workoutLevel"> 
+      Beginner workout
+      </p>
+      <ul>
+      ${exercisesList}
+      </ul>
+       <p>Series: ${selectedWorkoutBeginner.sets}</p><p> Reps: ${selectedWorkoutBeginner.reps}</p><p> Times a week: ${selectedWorkoutBeginner.timesAWeek}</p>
     `;
-    
     mainDiv.innerHTML = workoutBeginnerHTML;
-  }
+    }
 
 beginnerButton.addEventListener("click", () => {
     displayRandomBeginnerWorkout();
